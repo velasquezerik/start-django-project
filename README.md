@@ -88,6 +88,7 @@ To compile your static files, you need to run `pipenv run static`.
 These environment variables can be provided to configure your project.
 
 #### Django
+
 Name | Values | Default | Description
 --- | --- | --- | ---
 ENV | dev, test, qa, prod | prod | Indicates in which environmet the project is running on
@@ -107,8 +108,10 @@ LOGIN_REDIRECT_URL | Url | / | Url to redirect users after login in
 STATIC_URL | Url | /static/ | Url from which static files are served
 MEDIA_URL | Url | /media/ | Url from which media files are served
 
-#### Django Registration Redux
+#### Django Registration Redux 
+
 [Documentation](https://django-registration-redux.readthedocs.io)
+
 Name | Values | Default | Description
 --- | --- | --- | ---
 ACCOUNT_ACTIVATION_DAYS | int | 7 | How long (in days) after signup an account has in which to activate.
@@ -116,12 +119,14 @@ REGISTRATION_OPEN | on, off | on | Indicates whether registration of new account
 REGISTRATION_AUTO_LOGIN | on, off | on | If this is True, your users will automatically log in when they click on the activation link in their email.
 
 #### Celery
+
 Name | Values | Default | Description
 --- | --- | --- | ---
 CELERY_BROKER_URL | Database url | -- | A common value for development is to use redis://cache, but it's recommended for production to use RabbitMQ
 CELERY_TASK_ALWAYS_EAGER | on, off | off | If this is True, all tasks will be executed locally by blocking until the task returns. 
 
 #### Loggin & Sentry
+
 Name | Values | Default | Description
 --- | --- | --- | ---
 LOGS_ROOT | path | -- | Path to the directory where logs are to be stored
