@@ -81,6 +81,8 @@ Command | Shortcut for
 `pipenv run migrate` | `python manage.py migrate`
 `pipenv run createsuperuser` | `python manage.py createsuperuser`
 `pipenv run static` | `python manage.py collectstatic`
+`pipenv run isort` | isort is a Python utility / library to sort imports alphabetically, and automatically separated into sections. 
+`pipenv run flake8` | Flake8 runs all the tools by launching the single flake8 command. It displays the warnings in a per-file, merged output.
 
 To compile your static files, you need to run `pipenv run static`.
 
