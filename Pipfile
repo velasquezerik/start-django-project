@@ -4,13 +4,14 @@ url = "https://pypi.org/simple"
 verify_ssl = true
 
 [scripts]
+server = "gunicorn conf.wsgi:application --bind 0.0.0.0:8000"
 server_dev = "python manage.py runserver"
 tests = "pytest"
 celery = "pipenv run python manage.py celery_autoreload"
-migrate = "python manage.py migrate"
+test_celery = "pipenv run python manage.py test_celery"
 makemigrations = "python manage.py makemigrations"
+migrate = "python manage.py migrate"
 shell = "python manage.py shell"
-server = "gunicorn conf.wsgi:application --bind 0.0.0.0:8000"
 createsuperuser = "python manage.py createsuperuser"
 static = "python manage.py collectstatic"
 
