@@ -16,6 +16,7 @@ createsuperuser = "python manage.py createsuperuser"
 static = "python manage.py collectstatic"
 
 [dev-packages]
+django = ">=2.2.18"
 flake8 = "*"
 isort = "*"
 django-debug-toolbar = "*"
@@ -25,7 +26,7 @@ redis = "*"
 pytest-env = "*"
 
 [packages]
-django = "*"
+django = ">=2.2.18"
 gunicorn = "*"
 django-environ = "*"
 django-debug-toolbar = "*"
