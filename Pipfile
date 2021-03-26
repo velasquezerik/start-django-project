@@ -16,7 +16,7 @@ createsuperuser = "python manage.py createsuperuser"
 static = "python manage.py collectstatic"
 
 [dev-packages]
-django = ">=2.2.18"
+django = ">=3.0.0"
 flake8 = "*"
 isort = "*"
 django-debug-toolbar = "*"
@@ -26,7 +26,7 @@ redis = "*"
 pytest-env = "*"
 
 [packages]
-django = ">=2.2.18"
+django = ">=3.0.0"
 gunicorn = "*"
 django-environ = "*"
 django-debug-toolbar = "*"
@@ -37,4 +37,4 @@ celery = "*"
 django-registration-redux = "*"
 
 [requires]
-python_version = "3.7"
+python_version = "3.9"
