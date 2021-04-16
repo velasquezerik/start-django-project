@@ -2,4 +2,5 @@ from django.apps import AppConfig
 
 
 class MiscConfig(AppConfig):
-    name = 'misc'
+    default_auto_field = 'django.db.models.BigAutoField'
+    name = 'apps.misc'
