@@ -38,7 +38,7 @@ EMAIL_BACKEND = env(
 # -----------------------------------------------------------------------------
 SECRET_KEY = env('SECRET_KEY', default='bvta)#d1zny^e7fi+aezp2u(9+**y)r_*)=+brcyihhiy(gek_')
 ALLOWED_HOSTS = env.list('ALLOWED_HOSTS', default=[])
-#AUTH_USER_MODEL = 'users.User'
+# AUTH_USER_MODEL = 'users.User'
 AUTH_PASSWORD_VALIDATORS = [
     {'NAME': 'django.contrib.auth.password_validation.UserAttributeSimilarityValidator'},
     {'NAME': 'django.contrib.auth.password_validation.MinimumLengthValidator'},
