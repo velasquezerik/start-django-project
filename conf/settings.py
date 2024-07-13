@@ -5,7 +5,6 @@ import environ
 env = environ.Env()
 root_path = environ.Path(__file__) - 2
 
-
 # -----------------------------------------------------------------------------
 # Basic Config
 # -----------------------------------------------------------------------------
@@ -38,6 +37,8 @@ EMAIL_BACKEND = env(
 # -----------------------------------------------------------------------------
 SECRET_KEY = env('SECRET_KEY', default='bvta)#d1zny^e7fi+aezp2u(9+**y)r_*)=+brcyihhiy(gek_')
 ALLOWED_HOSTS = env.list('ALLOWED_HOSTS', default=[])
+CSRF_TRUSTED_ORIGINS = env.list('CSRF_TRUSTED_ORIGINS', default=[])
+
 # AUTH_USER_MODEL = 'users.User'
 AUTH_PASSWORD_VALIDATORS = [
     {'NAME': 'django.contrib.auth.password_validation.UserAttributeSimilarityValidator'},
@@ -121,11 +122,26 @@ CELERY_TASK_ALWAYS_EAGER = env('CELERY_TASK_ALWAYS_EAGER', default=False)
 # Static & Media Files
 # -----------------------------------------------------------------------------
 STATIC_URL = env('STATIC_URL', default='/static/')
-STATIC_ROOT = root_path('static')
+STATIC_ROOT = env('STATIC_ROOT', default=root_path('static'))
 
 MEDIA_URL = env('MEDIA_URL', default='/media/')
 MEDIA_ROOT = env('MEDIA_ROOT', default=root_path('media'))
 ADMIN_MEDIA_PREFIX = STATIC_URL + 'admin/'
+
+# -----------------------------------------------------------------------------
+# Storage files
+# -----------------------------------------------------------------------------
+USE_STORAGE = env.bool('USE_STORAGE', default=False)
+
+if USE_STORAGE:
+    # from google.oauth2 import service_account
+
+    STORAGES = {"default": {"BACKEND": "storages.backends.gcloud.GoogleCloudStorage"},
+                "staticfiles": {"BACKEND": "storages.backends.gcloud.GoogleCloudStorage"}
+                }
+    GS_BUCKET_NAME = env('GS_BUCKET_NAME', default='YOUR_BUCKET_NAME_GOES_HERE')
+
+    # GS_CREDENTIALS = service_account.Credentials.from_service_account_file("gcpCredential.json")
 
 # -----------------------------------------------------------------------------
 # Logging

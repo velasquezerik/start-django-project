@@ -15,7 +15,7 @@ If you are starting a new project go ahead and clone this repo in a directory of
 
 Create a database for your project. Then you need to create a file called `.env` and write the environment variables you wish to use for development
 
-```
+```text
 ENV=dev
 DEBUG=on
 SECRET_KEY='123'
@@ -35,7 +35,7 @@ ALLOWED_HOSTS=web,localhost,127.0.0.1
 
 We now need to override `DATABASE_URL` environment variable inside of Docker to connect directly to you host machine. Create a file called `.env.docker` with the following content:
 
-```
+```text
 DATABASE_URL=postgres://<user>:<password>@<host>:5432/<db_name>
 ```
 
@@ -46,13 +46,11 @@ DATABASE_URL=postgres://<user>:<password>@<host>:5432/<db_name>
 
 We are all set up for bringing everything live with
 
-```
+```bash
 docker-compose up
 ```
 
 Wait for everything to load, and you can visit `https://127.0.0.1:8000` and your new awesomely configured site will be there.
-
-
 
 ## Docker commands
 
@@ -75,7 +73,7 @@ These commands are at your disposal:
 
 Command | Shortcut for
 --- | ---
-`pipenv run server` | `gunicorn conf.wsgi:application --bind 0.0.0.0:8000`
+`pipenv run server` | `python manage.py runserver`
 `pipenv run prod-server` | `gunicorn conf.wsgi:application --bind 0.0.0.0:8000`
 `pipenv run dev-server` | `python manage.py runserver`
 `pipenv run tests` | `pytest`
