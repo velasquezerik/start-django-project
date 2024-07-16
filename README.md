@@ -23,6 +23,7 @@ DATABASE_URL=postgres://<user>:<password>@127.0.0.1:5432/<db_name>
 EMAIL_BACKEND=django.core.mail.backends.console.EmailBackend
 USE_DEBUG_TOOLBAR=on
 ALLOWED_HOSTS=web,localhost,127.0.0.1
+CSRF_TRUSTED_ORIGINS=http://web:8000,http://localhost:8000,http://127.0.0.1:8000
 
 #Celery Broker with redis
 #CELERY_BROKER_URL=redis://localhost:6379/0

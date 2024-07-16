@@ -7,9 +7,9 @@ services:
       context: .
       dockerfile: Dockerfile
     volumes:
-      - .:/code
-      - ./logs/web:/logs
-      - ./media:/uploads
+      - .:/home/user/app
+      - ./logs/web:/home/user/app/logs
+      - ./media:/home/user/app/media
     command: gunicorn conf.wsgi:application --bind 0.0.0.0:8000
     #command: python manage.py runserver 0.0.0.0:8000
     env_file:
@@ -17,8 +17,8 @@ services:
       - .env.docker
     environment:
       - BROKER_URL=redis://cache
-      - MEDIA_ROOT=/uploads
-      - LOGS_ROOT=/logs
+      - MEDIA_ROOT=/home/user/app/media
+      - LOGS_ROOT=/home/user/app/logs
       - DJANGO_WEB_HOST="web"
     links:
       - redis:cache
@@ -45,17 +45,17 @@ services:
       context: .
       dockerfile: Dockerfile
     volumes:
-      - .:/code
-      - ./logs/worker:/logs
-      - ./media:/uploads
+      - .:/home/user/app
+      - ./logs/worker:/home/user/app/logs
+      - ./media:/home/user/app/media
     command: python manage.py celery_autoreload
     env_file:
       - .env
       - .env.docker
     environment:
       - BROKER_URL=redis://cache
-      - MEDIA_ROOT=/uploads
-      - LOGS_ROOT=/logs
+      - MEDIA_ROOT=/home/user/app/media
+      - LOGS_ROOT=/home/user/app/logs
     links:
       - redis:cache
     networks:
