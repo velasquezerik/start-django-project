@@ -1,7 +1,7 @@
 [[source]]
-name = "pypi"
 url = "https://pypi.org/simple"
 verify_ssl = true
+name = "pypi"
 
 [scripts]
 server = "python manage.py runserver"
@@ -18,21 +18,25 @@ static = "python manage.py collectstatic"
 
 [packages]
 django = "==4.2.14"
-psycopg2-binary = "*"
+django-environ = "*"
 celery = "*"
 gunicorn = "*"
-django-environ = "*"
 django-debug-toolbar = "*"
 django-webpack-loader = "*"
 django-extensions = "*"
 django-registration-redux = "*"
+psycopg2-binary = "*"
+pillow = "*"
+django-storages = {extras = ["google"], version = ">=1.13.2"}
+django-imagekit = "*"
 isort = "*"
 flake8 = "*"
+pytest = "*"
+pytest-django = "*"
 
 [dev-packages]
-django = "==4.2.14"
-flake8 = "*"
 isort = "*"
+flake8 = "*"
 django-debug-toolbar = "*"
 pytest = "*"
 pytest-django = "*"
@@ -41,3 +45,4 @@ pytest-env = "*"
 
 [requires]
 python_version = "3.12"
+python_full_version = "3.12.4"

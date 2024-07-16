@@ -21,7 +21,6 @@ WSGI_APPLICATION = 'conf.wsgi.application'
 LANGUAGE_CODE = env('LANGUAGE_CODE', default='en-us')
 TIME_ZONE = env('TIMEZONE', default='UTC')
 USE_I18N = env('USE_I18N', default=True)
-USE_L10N = env('USE_L10N', default=True)
 USE_TZ = env('USE_TZ', default=True)
 
 # -----------------------------------------------------------------------------
@@ -60,6 +59,8 @@ REGISTRATION_AUTO_LOGIN = env.bool('REGISTRATION_AUTO_LOGIN', default=True)
 # -----------------------------------------------------------------------------
 DJANGO_DATABASE_URL = env.db('DATABASE_URL', default='postgres://postgres@localhost/test_db')
 DATABASES = {'default': DJANGO_DATABASE_URL}
+
+DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 # -----------------------------------------------------------------------------
 # Applications configuration
@@ -134,14 +135,16 @@ ADMIN_MEDIA_PREFIX = STATIC_URL + 'admin/'
 USE_STORAGE = env.bool('USE_STORAGE', default=False)
 
 if USE_STORAGE:
-    # from google.oauth2 import service_account
+    from google.oauth2 import service_account
 
     STORAGES = {"default": {"BACKEND": "storages.backends.gcloud.GoogleCloudStorage"},
                 "staticfiles": {"BACKEND": "storages.backends.gcloud.GoogleCloudStorage"}
                 }
     GS_BUCKET_NAME = env('GS_BUCKET_NAME', default='YOUR_BUCKET_NAME_GOES_HERE')
 
-    # GS_CREDENTIALS = service_account.Credentials.from_service_account_file("gcpCredential.json")
+    GS_CREDENTIALS = service_account.Credentials.from_service_account_file(
+        "gcpCredential.json"
+    )
 
 # -----------------------------------------------------------------------------
 # Logging
@@ -188,6 +191,9 @@ LOGGING = {
     }
 }
 
+# -----------------------------------------------------------------------------
+# Sentry
+# -----------------------------------------------------------------------------
 USE_SENTRY = env.bool('USE_SENTRY', default=False)
 
 if USE_SENTRY:
