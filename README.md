@@ -16,22 +16,65 @@ If you are starting a new project go ahead and clone this repo in a directory of
 Create a database for your project. Then you need to create a file called `.env` and write the environment variables you wish to use for development
 
 ```text
+# -----------------------------------------------------------------------------
+# Basic Config
+# -----------------------------------------------------------------------------
 ENV=dev
 DEBUG=on
-SECRET_KEY='123'
-DATABASE_URL=postgres://<user>:<password>@127.0.0.1:5432/<db_name>
-EMAIL_BACKEND=django.core.mail.backends.console.EmailBackend
-USE_DEBUG_TOOLBAR=on
+ROOT_URLCONF=conf.urls
+WSGI_APPLICATION=conf.wsgi.application
+
+# -----------------------------------------------------------------------------
+# Time & Language
+# -----------------------------------------------------------------------------
+LANGUAGE_CODE=en-us
+TIMEZONE=UTC
+USE_I18N=on
+USE_L10N=on
+
+# -----------------------------------------------------------------------------
+# Emails
+# -----------------------------------------------------------------------------
+DEFAULT_FROM_EMAIL=no-reply@example.com
+EMAIL_BACKEND=django.core.mail.backends.smtp.EmailBackend
+
+# -----------------------------------------------------------------------------
+# Security and Users
+# -----------------------------------------------------------------------------
+SECRET_KEY='django-insecure-ybeqypo0%0#9p8usxk1ifuieu#4e8wvsp=7o-ya%!p#_*zxkmb'
 ALLOWED_HOSTS=web,localhost,127.0.0.1
 CSRF_TRUSTED_ORIGINS=http://web:8000,http://localhost:8000,http://127.0.0.1:8000
+LOGIN_URL=/login/
+LOGIN_REDIRECT_URL=/
 
-#Celery Broker with redis
-#CELERY_BROKER_URL=redis://localhost:6379/0
+# -----------------------------------------------------------------------------
+# Databases
+# -----------------------------------------------------------------------------
+DATABASE_URL=postgres://<user>:<password>@127.0.0.1:5432/<db_name>
+DEFAULT_AUTO_FIELD=django.db.models.BigAutoField
 
-#Sentry
-#LOGS_ROOT=./logs
-#USE_SENTRY=on
-#SENTRY_DSN=https://<project-key>@sentry.io/<project-id>
+# -----------------------------------------------------------------------------
+# Celery
+# -----------------------------------------------------------------------------
+CELERY_BROKER_URL=redis://cache
+CELERY_TASK_ALWAYS_EAGER=off
+
+# -----------------------------------------------------------------------------
+# Static & Media Files
+# -----------------------------------------------------------------------------
+STATIC_URL=/static/
+MEDIA_URL=/media/
+
+# -----------------------------------------------------------------------------
+# Storage files
+# -----------------------------------------------------------------------------
+USE_STORAGE=off
+
+# -----------------------------------------------------------------------------
+# Sentry
+# -----------------------------------------------------------------------------
+USE_SENTRY=off
+SENTRY_DSN=https://<project-key>@sentry.io/<project-id>
 ```
 
 We now need to override `DATABASE_URL` environment variable inside of Docker to connect directly to you host machine. Create a file called `.env.docker` with the following content:
@@ -114,16 +157,6 @@ LOGIN_URL | Url | /login/ | Url to redirect users when login is needed
 LOGIN_REDIRECT_URL | Url | / | Url to redirect users after login in
 STATIC_URL | Url | /static/ | Url from which static files are served
 MEDIA_URL | Url | /media/ | Url from which media files are served
-
-#### Django Registration Redux
-
-[Documentation](https://django-registration-redux.readthedocs.io)
-
-Name | Values | Default | Description
---- | --- | --- | ---
-ACCOUNT_ACTIVATION_DAYS | int | 7 | How long (in days) after signup an account has in which to activate.
-REGISTRATION_OPEN | on, off | on | Indicates whether registration of new accounts is currently permitted.
-REGISTRATION_AUTO_LOGIN | on, off | on | If this is True, your users will automatically log in when they click on the activation link in their email.
 
 #### Celery
 

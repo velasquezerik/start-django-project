@@ -12,8 +12,8 @@ ENV = env('ENV', default='prod')
 assert ENV in ['dev', 'test', 'prod', 'qa']
 DEBUG = env.bool('DEBUG', default=False)
 BASE_DIR = root_path()
-ROOT_URLCONF = 'conf.urls'
-WSGI_APPLICATION = 'conf.wsgi.application'
+ROOT_URLCONF = env('ROOT_URLCONF', default='conf.urls')
+WSGI_APPLICATION = env('WSGI_APPLICATION', default='conf.wsgi.application')
 
 # -----------------------------------------------------------------------------
 # Time & Language
@@ -26,7 +26,7 @@ USE_TZ = env('USE_TZ', default=True)
 # -----------------------------------------------------------------------------
 # Emails
 # -----------------------------------------------------------------------------
-DEFAULT_FROM_EMAIL = env('DEFAULT_FROM_EMAIL', default='')
+DEFAULT_FROM_EMAIL = env('DEFAULT_FROM_EMAIL', default='no-reply@example.com')
 EMAIL_BACKEND = env(
     'EMAIL_BACKEND',
     default='django.core.mail.backends.smtp.EmailBackend')
@@ -50,17 +50,14 @@ AUTHENTICATION_BACKENDS = (
 )
 LOGIN_URL = env('LOGIN_URL', default='/login/')
 LOGIN_REDIRECT_URL = env('LOGIN_REDIRECT_URL', default='/')
-ACCOUNT_ACTIVATION_DAYS = env.int('ACCOUNT_ACTIVATION_DAYS', default=7)
-REGISTRATION_OPEN = env.bool('REGISTRATION_OPEN', default=True)
-REGISTRATION_AUTO_LOGIN = env.bool('REGISTRATION_AUTO_LOGIN', default=True)
 
 # -----------------------------------------------------------------------------
 # Databases
 # -----------------------------------------------------------------------------
-DJANGO_DATABASE_URL = env.db('DATABASE_URL', default='postgres://postgres@localhost/test_db')
+DJANGO_DATABASE_URL = env.db('DATABASE_URL', default='sqlite:///db.sqlite3')
 DATABASES = {'default': DJANGO_DATABASE_URL}
 
-DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+DEFAULT_AUTO_FIELD = env('DEFAULT_AUTO_FIELD', default='django.db.models.BigAutoField')
 
 # -----------------------------------------------------------------------------
 # Applications configuration

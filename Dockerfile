@@ -1,5 +1,5 @@
 # Pull base image
-FROM python:3.12-slim
+FROM python:3.12
 
 # set default environment variables
 ENV PYTHONFAULTHANDLER=1 \
@@ -36,9 +36,6 @@ RUN mkdir /home/user/app/logs
 RUN mkdir /home/user/app/media
 
 COPY . /home/user/app/
-
-# Set static file
-RUN pipenv run static
 
 # Set work directory
 WORKDIR /home/user/app/
