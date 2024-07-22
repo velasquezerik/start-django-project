@@ -37,8 +37,7 @@ EMAIL_BACKEND = env(
 SECRET_KEY = env('SECRET_KEY', default='bvta)#d1zny^e7fi+aezp2u(9+**y)r_*)=+brcyihhiy(gek_')
 ALLOWED_HOSTS = env.list('ALLOWED_HOSTS', default=[])
 CSRF_TRUSTED_ORIGINS = env.list('CSRF_TRUSTED_ORIGINS', default=[])
-
-# AUTH_USER_MODEL = 'users.User'
+AUTH_USER_MODEL = 'users.User'
 AUTH_PASSWORD_VALIDATORS = [
     {'NAME': 'django.contrib.auth.password_validation.UserAttributeSimilarityValidator'},
     {'NAME': 'django.contrib.auth.password_validation.MinimumLengthValidator'},
@@ -64,7 +63,7 @@ DEFAULT_AUTO_FIELD = env('DEFAULT_AUTO_FIELD', default='django.db.models.BigAuto
 # -----------------------------------------------------------------------------
 INSTALLED_APPS = [
     # First party
-    'django.contrib.admin',
+    # 'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
     'django.contrib.sessions',
@@ -74,7 +73,9 @@ INSTALLED_APPS = [
     # Third party
 
     # Local
+    'conf.apps.CustomAdminConfig',
     'apps.misc',
+    'apps.users',
 ]
 
 if ENV == 'dev':
