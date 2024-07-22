@@ -20,10 +20,10 @@ class User(base_models.AbstractBaseUser, base_models.PermissionsMixin):
     objects = managers.UserManager()
 
     def get_full_name(self):
-        return self.email
+        return self.first_name
 
     def get_short_name(self):
-        return self.email
+        return self.first_name
 
     def get_username(self):
         return self.email
