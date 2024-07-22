@@ -20,7 +20,7 @@ class UserAdmin(CoreUserAdmin):
     )
     list_display_links = ("id", "email")
     list_filter = ("is_active", "is_staff", "is_superuser", "last_login", "date_joined")
-    search_fields = ("email","first_name","last_name",)
+    search_fields = ("email", "first_name", "last_name",)
 
     fieldsets = (
         (None, {"fields": ("password",)}),
@@ -29,7 +29,7 @@ class UserAdmin(CoreUserAdmin):
         ("Important dates", {"fields": ("last_login", "date_joined")}),
     )
 
-    add_fieldsets = ((None, {"fields": ["email","first_name","last_name","password1","password2"]}),)
+    add_fieldsets = ((None, {"fields": ["email", "first_name", "last_name", "password1", "password2"]}),)
 
 
 admin.site.unregister(base_models.Group)
