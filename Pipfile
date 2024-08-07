@@ -17,7 +17,7 @@ createsuperuser = "python manage.py createsuperuser"
 static = "python manage.py collectstatic"
 
 [packages]
-django = "==4.2.14"
+django = "==4.2.15"
 django-environ = "*"
 celery = "*"
 gunicorn = "*"
