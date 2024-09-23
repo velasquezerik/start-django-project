@@ -5,8 +5,11 @@ from django.urls import include, path
 from django.views.generic import TemplateView
 
 urlpatterns = [
-    path("", include("apps.users.urls.auth")),
+    path("", TemplateView.as_view(template_name="index.html")),
+    # path("", include("apps.users.urls.auth")),
+    path('accounts/', include('allauth.urls')),
     path("admin/", admin.site.urls),
+    path("i18n/", include("django.conf.urls.i18n")),
 ]
 
 if settings.DEBUG:

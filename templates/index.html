@@ -1,0 +1,40 @@
+{% extends "base.html" %}
+{% load i18n %}
+{% block page_title %}Start Django | Home Page{% endblock page_title %}
+
+{% block body %}
+<div class="flex-grow-1 bg-body-secondary d-flex flex-column justify-content-center">
+    <div class="flex-grow-0 flex-shrink-0 container">
+        <div class="row justify-content-md-center">
+            <div class="col col-lg-4">
+                {% if messages %}
+                    {% for message in messages %}
+                        {% if message.level == DEFAULT_MESSAGE_LEVELS.SUCCESS %}
+                        <div class="alert alert-success alert-dismissible">
+                            <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+                            {{ message }}
+                        </div>
+                        {% elif message.level == DEFAULT_MESSAGE_LEVELS.ERROR %}
+                        <div class="alert alert-danger alert-dismissible">
+                            <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+                            {{ message }}
+                        </div>
+                        {% else %}
+                        <div class="alert alert-info alert-dismissible">
+                            <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+                            {{ message }}
+                        </div>
+                        {% endif %}
+                    {% endfor %}
+                {% endif %}
+                <div class="bg-white shadow rounded-4">
+                    <div class="p-5">
+                        <h1>Start Django</h1>
+                        <p>Welcome to the example start-django project.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock body %}

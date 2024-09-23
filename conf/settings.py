@@ -22,6 +22,10 @@ LANGUAGE_CODE = env('LANGUAGE_CODE', default='en-us')
 TIME_ZONE = env('TIMEZONE', default='UTC')
 USE_I18N = env('USE_I18N', default=True)
 USE_TZ = env('USE_TZ', default=True)
+LANGUAGES = [
+    ("en-us", "English"),
+    ("es", "Spanish"),
+]
 
 # -----------------------------------------------------------------------------
 # Emails
@@ -46,6 +50,9 @@ AUTH_PASSWORD_VALIDATORS = [
 ]
 AUTHENTICATION_BACKENDS = (
     'django.contrib.auth.backends.ModelBackend',
+
+    # `allauth` specific authentication methods, such as login by email
+    'allauth.account.auth_backends.AuthenticationBackend',
 )
 LOGIN_URL = env('LOGIN_URL', default='/login/')
 LOGIN_REDIRECT_URL = env('LOGIN_REDIRECT_URL', default='/')
@@ -71,6 +78,8 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
 
     # Third party
+    'allauth',
+    'allauth.account',
 
     # Local
     'conf.apps.CustomAdminConfig',
@@ -91,6 +100,9 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+
+    # allauth middleware:
+    'allauth.account.middleware.AccountMiddleware',
 ]
 
 TEMPLATES = [
@@ -203,3 +215,14 @@ if USE_SENTRY:
         integrations=[DjangoIntegration()],
         environment=ENV
     )
+
+# -----------------------------------------------------------------------------
+# allauth settings
+# -----------------------------------------------------------------------------
+ACCOUNT_AUTHENTICATION_METHOD = "email"
+ACCOUNT_CHANGE_EMAIL = True
+ACCOUNT_EMAIL_REQUIRED = True
+ACCOUNT_USER_MODEL_USERNAME_FIELD = None
+ACCOUNT_USERNAME_REQUIRED = False
+SITE_ID = 1
+
