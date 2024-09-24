@@ -44,7 +44,7 @@ EMAIL_BACKEND=django.core.mail.backends.smtp.EmailBackend
 SECRET_KEY='django-insecure-ybeqypo0%0#9p8usxk1ifuieu#4e8wvsp=7o-ya%!p#_*zxkmb'
 ALLOWED_HOSTS=web,localhost,127.0.0.1
 CSRF_TRUSTED_ORIGINS=http://web:8000,http://localhost:8000,http://127.0.0.1:8000
-LOGIN_URL=/login/
+LOGIN_URL=/accounts/login/
 LOGIN_REDIRECT_URL=/
 
 # -----------------------------------------------------------------------------

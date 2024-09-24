@@ -54,7 +54,7 @@ AUTHENTICATION_BACKENDS = (
     # `allauth` specific authentication methods, such as login by email
     'allauth.account.auth_backends.AuthenticationBackend',
 )
-LOGIN_URL = env('LOGIN_URL', default='/login/')
+LOGIN_URL = env('LOGIN_URL', default='/accounts/login/')
 LOGIN_REDIRECT_URL = env('LOGIN_REDIRECT_URL', default='/')
 
 # -----------------------------------------------------------------------------
@@ -224,5 +224,10 @@ ACCOUNT_CHANGE_EMAIL = True
 ACCOUNT_EMAIL_REQUIRED = True
 ACCOUNT_USER_MODEL_USERNAME_FIELD = None
 ACCOUNT_USERNAME_REQUIRED = False
+ACCOUNT_EMAIL_VERIFICATION = "mandatory"
 SITE_ID = 1
-
+ACCOUNT_EMAIL_NOTIFICATIONS = True
+ACCOUNT_LOGOUT_ON_GET = True
+ACCOUNT_LOGOUT_ON_PASSWORD_CHANGE = True
+ACCOUNT_SIGNUP_PASSWORD_ENTER_TWICE = True
+ACCOUNT_UNIQUE_EMAIL = True
