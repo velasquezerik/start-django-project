@@ -91,6 +91,7 @@ ACCOUNT_LOGOUT_ON_GET=on
 ACCOUNT_LOGOUT_ON_PASSWORD_CHANGE=on
 ACCOUNT_SIGNUP_PASSWORD_ENTER_TWICE=on
 ACCOUNT_UNIQUE_EMAIL=on
+ADMIN_LOGIN_USING_ALLAUTH=on
 ```
 
 We now need to override `DATABASE_URL` environment variable inside of Docker to connect directly to you host machine. Create a file called `.env.docker` with the following content:
@@ -205,3 +206,4 @@ ACCOUNT_LOGOUT_ON_GET | on, off | on | Determines whether or not the user is aut
 ACCOUNT_LOGOUT_ON_PASSWORD_CHANGE | on, off | on | Determines whether or not the user is automatically logged out after changing or setting their password.
 ACCOUNT_SIGNUP_PASSWORD_ENTER_TWICE | on, off | on | When signing up, let the user type in their password twice to avoid typos
 ACCOUNT_UNIQUE_EMAIL | on, off | on | Enforce uniqueness of email addresses.
+ADMIN_LOGIN_USING_ALLAUTH | on, off | on | Enforce using allauth authentication for admin site.
