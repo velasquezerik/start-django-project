@@ -207,3 +207,4 @@ ACCOUNT_LOGOUT_ON_PASSWORD_CHANGE | on, off | on | Determines whether or not the
 ACCOUNT_SIGNUP_PASSWORD_ENTER_TWICE | on, off | on | When signing up, let the user type in their password twice to avoid typos
 ACCOUNT_UNIQUE_EMAIL | on, off | on | Enforce uniqueness of email addresses.
 ADMIN_LOGIN_USING_ALLAUTH | on, off | on | Enforce using allauth authentication for admin site.
+USERSESSIONS_TRACK_ACTIVITY | on, off | on | Whether or not user sessions are kept updated.

@@ -76,10 +76,12 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'django.contrib.humanize',
 
     # Third party
     'allauth',
     'allauth.account',
+    'allauth.usersessions',
 
     # Local
     'conf.apps.CustomAdminConfig',
@@ -103,6 +105,7 @@ MIDDLEWARE = [
 
     # allauth middleware:
     'allauth.account.middleware.AccountMiddleware',
+    'allauth.usersessions.middleware.UserSessionsMiddleware',
 ]
 
 TEMPLATES = [
@@ -232,3 +235,4 @@ ACCOUNT_LOGOUT_ON_PASSWORD_CHANGE = env.bool('ACCOUNT_LOGOUT_ON_PASSWORD_CHANGE'
 ACCOUNT_SIGNUP_PASSWORD_ENTER_TWICE = env.bool('ACCOUNT_SIGNUP_PASSWORD_ENTER_TWICE', default=True)
 ACCOUNT_UNIQUE_EMAIL = env.bool('ACCOUNT_UNIQUE_EMAIL', default=True)
 ADMIN_LOGIN_USING_ALLAUTH = env.bool('ADMIN_LOGIN_USING_ALLAUTH', default=True)
+USERSESSIONS_TRACK_ACTIVITY = env.bool('USERSESSIONS_TRACK_ACTIVITY', default=True)
