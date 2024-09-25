@@ -75,6 +75,22 @@ USE_STORAGE=off
 # -----------------------------------------------------------------------------
 USE_SENTRY=off
 SENTRY_DSN=https://<project-key>@sentry.io/<project-id>
+
+
+# -----------------------------------------------------------------------------
+# allauth settings
+# -----------------------------------------------------------------------------
+ACCOUNT_AUTHENTICATION_METHOD=email
+ACCOUNT_CHANGE_EMAIL=on
+ACCOUNT_EMAIL_REQUIRED=on
+ACCOUNT_USERNAME_REQUIRED=off
+ACCOUNT_EMAIL_VERIFICATION=mandatory
+SITE_ID=1
+ACCOUNT_EMAIL_NOTIFICATIONS=on
+ACCOUNT_LOGOUT_ON_GET=on
+ACCOUNT_LOGOUT_ON_PASSWORD_CHANGE=on
+ACCOUNT_SIGNUP_PASSWORD_ENTER_TWICE=on
+ACCOUNT_UNIQUE_EMAIL=on
 ```
 
 We now need to override `DATABASE_URL` environment variable inside of Docker to connect directly to you host machine. Create a file called `.env.docker` with the following content:
@@ -172,3 +188,20 @@ Name | Values | Default | Description
 LOGS_ROOT | path | -- | Path to the directory where logs are to be stored
 USE_SENTRY | on, off | off | Enables sentry
 SENTRY_DSN | string | -- | Private URL-like configuration
+
+#### Allauth
+
+Name | Values | Default | Description
+--- | --- | --- | ---
+ACCOUNT_AUTHENTICATION_METHOD | username, email, username_email | email | Specifies the login method to use – whether the user logs in by entering their username, email address, or either one of both.
+ACCOUNT_CHANGE_EMAIL | on, off | on | When enabled (True), users are limited to having exactly one email address that they can change by adding a temporary second email address that, when verified, replaces the current email address.
+ACCOUNT_EMAIL_REQUIRED | on, off | on | The user is required to hand over an email address when signing up.
+ACCOUNT_USER_MODEL_USERNAME_FIELD | string | None | The name of the field containing the username, if any. See custom user models.
+ACCOUNT_USERNAME_REQUIRED | on, off | off | The user is required to enter a username when signing up. 
+ACCOUNT_EMAIL_VERIFICATION | mandatory, optional, none | mandatory | Determines the email verification method during signup
+SITE_ID | int | 1 | Site ID
+ACCOUNT_EMAIL_NOTIFICATIONS | on, off | on | When enabled, account related security notifications, such as “Your password was changed”, including information on user agent / IP address from where the change originated, will be emailed.
+ACCOUNT_LOGOUT_ON_GET | on, off | on | Determines whether or not the user is automatically logged out by a GET request.
+ACCOUNT_LOGOUT_ON_PASSWORD_CHANGE | on, off | on | Determines whether or not the user is automatically logged out after changing or setting their password.
+ACCOUNT_SIGNUP_PASSWORD_ENTER_TWICE | on, off | on | When signing up, let the user type in their password twice to avoid typos
+ACCOUNT_UNIQUE_EMAIL | on, off | on | Enforce uniqueness of email addresses.
