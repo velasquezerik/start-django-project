@@ -1,9 +1,9 @@
+from allauth.account.decorators import secure_admin_login
 from django.conf import settings
 from django.conf.urls.static import static
 from django.contrib import admin
 from django.urls import include, path
 from django.views.generic import TemplateView
-from allauth.account.decorators import secure_admin_login
 
 if settings.ADMIN_LOGIN_USING_ALLAUTH:
     admin.autodiscover()
